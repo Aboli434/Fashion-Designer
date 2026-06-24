@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair-display);
+
+  --color-brand-black: #0a0a0a;
+  --color-brand-white: #ffffff;
+  --color-brand-red: #e60000;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-brand-white);
+    --foreground: var(--color-brand-black);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: var(--color-brand-black);
+      --foreground: var(--color-brand-white);
+    }
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased font-sans transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
