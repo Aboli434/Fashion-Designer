@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "word1": "Redefine",
+    "word2": "Elegance",
+    "word3": "Today.",
+    "subtitle": "Discover the new avant-garde collection where bold streetwear meets timeless luxury tailoring.",
+    "image": "/images/hero.png",
+    "buttons": [
+      {
+        "text": "Explore Collection",
+        "variant": "primary",
+        "link": "#"
+      },
+      {
+        "text": "Discover Atelier",
+        "variant": "outline",
+        "link": "#"
+      }
+    ]
+  },
+  "about": {
+    "title": "The",
+    "highlight": "Visionary",
+    "description": "Founded on the principles of unapologetic elegance and avant-garde structure, our atelier has spent over a decade redefining modern luxury. We believe in the power of silhouette, the necessity of impeccable tailoring, and the bold statement of stark contrast.",
+    "image": "/images/designer.png",
+    "stats": [
+      { "label": "Years Active", "value": 12 },
+      { "label": "Collections", "value": 24 },
+      { "label": "Retailers", "value": 150, "suffix": "+" },
+      { "label": "Global Awards", "value": 14 }
+    ],
+    "timeline": [
+      {
+        "year": "2014",
+        "title": "Atelier Foundation",
+        "description": "The brand was born in a small studio in Paris, focusing entirely on bespoke tailoring and avant-garde silhouettes."
+      },
+      {
+        "year": "2016",
+        "title": "First Runway",
+        "description": "Debuted the first full collection at Paris Fashion Week, gaining international recognition for the stark black & red palette."
+      },
+      {
+        "year": "2022",
+        "title": "Global Expansion",
+        "description": "Opened flagship stores in Tokyo, New York, and Milan. Expanding into luxury accessories."
+      }
+    ],
+    "awards": [
+      { "year": "2023", "title": "Designer of the Year", "org": "International Fashion Council" },
+      { "year": "2021", "title": "Best Avant-Garde Collection", "org": "Vogue Paris" },
+      { "year": "2019", "title": "Excellence in Tailoring", "org": "CFDA Awards" },
+      { "year": "2017", "title": "Emerging Talent", "org": "LVMH Prize Nominee" }
+    ]
+  },
+  "gallery": [
+    { "id": 1, "src": "/images/gallery-1.png", "alt": "Editorial portrait", "aspect": "aspect-[3/4]" },
+    { "id": 2, "src": "/images/gallery-2.png", "alt": "Runway model in black", "aspect": "aspect-[4/5]" },
+    { "id": 3, "src": "/images/gallery-3.png", "alt": "Macro luxury fabric", "aspect": "aspect-square" },
+    { "id": 4, "src": "/images/gallery-4.png", "alt": "Streetwear in motion", "aspect": "aspect-[4/5]" },
+    { "id": 5, "src": "/images/gallery-5.png", "alt": "Luxury leather bag", "aspect": "aspect-[3/4]" }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "quote": "Maison's pieces are a masterclass in structural elegance. The FW27 collection single-handedly redefined how we style avant-garde looks for the red carpet.",
+      "name": "Eleanor Vance",
+      "role": "Editor-in-Chief, Vogue Paris",
+      "image": "/images/client-1.png",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "quote": "Working with this atelier is a revelation. The uncompromising quality and dramatic silhouettes always make my clients the center of attention.",
+      "name": "Julian Sterling",
+      "role": "Celebrity Stylist",
+      "image": "/images/client-2.png",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "quote": "Our boutique clients demand the extraordinary. The capsule collections from Maison consistently exceed expectations with their striking red and black palette.",
+      "name": "Clara Dupont",
+      "role": "Owner, L'Etoile Boutique",
+      "image": "/images/client-3.png",
+      "rating": 5
+    }
+  ]
+}

@@ -23,9 +23,17 @@ export function ContactSection() {
     setErrorMessage("");
 
     try {
-      // NOTE: Replace these with actual EmailJS credentials
+      // If using the placeholder IDs, simulate a network request for the demo
+      const serviceId = "YOUR_SERVICE_ID";
+      
+      if (serviceId === "YOUR_SERVICE_ID") {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setStatus("success");
+        return;
+      }
+
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
+        serviceId,
         "YOUR_TEMPLATE_ID",
         formRef.current,
         "YOUR_PUBLIC_KEY"

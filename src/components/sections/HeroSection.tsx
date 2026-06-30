@@ -32,7 +32,16 @@ const fadeUpVariants: Variants = {
   },
 };
 
-export function HeroSection() {
+interface HeroData {
+  word1: string;
+  word2: string;
+  word3: string;
+  subtitle: string;
+  image: string;
+  buttons: Array<{ text: string; variant: "primary" | "outline"; link: string }>;
+}
+
+export function HeroSection({ data }: { data: HeroData }) {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -53,13 +62,13 @@ export function HeroSection() {
           {/* Headline */}
           <h1 className="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] leading-[1.1] tracking-tight text-brand-black dark:text-brand-white uppercase mb-8">
             <div className="pb-2 overflow-hidden flex flex-wrap">
-              <SplitText text="Redefine" delayStart={0.3} />
+              <SplitText text={data.word1} delayStart={0.3} />
             </div>
             <div className="pb-2 overflow-hidden flex flex-wrap">
-              <SplitText text="Elegance" delayStart={0.7} className="text-brand-red italic pr-4" />
+              <SplitText text={data.word2} delayStart={0.7} className="text-brand-red italic pr-4" />
             </div>
             <div className="pb-2 overflow-hidden flex flex-wrap">
-              <SplitText text="Today." delayStart={1.1} />
+              <SplitText text={data.word3} delayStart={1.1} />
             </div>
           </h1>
 
@@ -70,7 +79,7 @@ export function HeroSection() {
             animate="visible"
             className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-md mb-12 font-sans tracking-wide leading-relaxed"
           >
-            Discover the new avant-garde collection where bold streetwear meets timeless luxury tailoring.
+            {data.subtitle}
           </motion.p>
 
           {/* CTAs */}
@@ -80,8 +89,9 @@ export function HeroSection() {
             animate="visible"
             className="flex flex-col sm:flex-row gap-6"
           >
-            <Button variant="primary">Explore Collection</Button>
-            <Button variant="outline">Discover Atelier</Button>
+            {data.buttons.map((btn, idx) => (
+              <Button key={idx} variant={btn.variant}>{btn.text}</Button>
+            ))}
           </motion.div>
         </div>
       </div>
@@ -94,7 +104,7 @@ export function HeroSection() {
         >
           <div className="absolute inset-0 bg-brand-black/20 z-10" /> {/* Subtle overlay for contrast */}
           <Image
-            src="/images/hero.png"
+            src={data.image}
             alt="Luxury Fashion Model"
             fill
             priority
