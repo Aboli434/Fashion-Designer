@@ -54,10 +54,10 @@ export function HeroSection({ data }: { data: HeroData }) {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen flex flex-col lg:flex-row overflow-hidden bg-brand-white dark:bg-brand-black"
+      className="relative w-full min-h-screen lg:h-screen flex flex-col lg:flex-row overflow-hidden bg-brand-white dark:bg-brand-black"
     >
       {/* Left Content */}
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-24 pt-32 lg:pt-0 z-10">
+      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-24 pt-32 pb-16 lg:pt-0 lg:pb-0 z-10">
         <div className="max-w-xl">
           {/* Headline */}
           <h1 className="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] leading-[1.1] tracking-tight text-brand-black dark:text-brand-white uppercase mb-8">
@@ -97,7 +97,7 @@ export function HeroSection({ data }: { data: HeroData }) {
       </div>
 
       {/* Right Image */}
-      <div className="flex-1 relative h-[50vh] lg:h-screen w-full overflow-hidden mt-12 lg:mt-0">
+      <div className="flex-1 relative min-h-[50vh] lg:h-screen w-full overflow-hidden">
         <motion.div 
           className="absolute inset-0 w-full h-full"
           style={{ y: imageY, scale: imageScale }}

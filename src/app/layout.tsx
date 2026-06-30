@@ -4,7 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/Navbar";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { InitialLoader } from "@/components/animations/InitialLoader";
 import { Footer } from "@/components/layout/Footer";
 
@@ -44,7 +43,6 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <InitialLoader />
-          <CustomCursor />
           <Navbar />
           {children}
           <Footer />
