@@ -2,8 +2,8 @@
 
 import { useState, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { submitContact } from "@/app/actions/contact";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -23,22 +23,15 @@ export function ContactSection() {
     setErrorMessage("");
 
     try {
-      // If using the placeholder IDs, simulate a network request for the demo
-      const serviceId = "YOUR_SERVICE_ID";
-      
-      if (serviceId === "YOUR_SERVICE_ID") {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setStatus("success");
-        return;
-      }
+      const formData = new FormData(formRef.current);
+      const result = await submitContact(formData);
 
-      await emailjs.sendForm(
-        serviceId,
-        "YOUR_TEMPLATE_ID",
-        formRef.current,
-        "YOUR_PUBLIC_KEY"
-      );
-      setStatus("success");
+      if (result.error) {
+        setStatus("error");
+        setErrorMessage(result.error);
+      } else {
+        setStatus("success");
+      }
     } catch (error) {
       console.error(error);
       setStatus("error");
@@ -72,7 +65,7 @@ export function ContactSection() {
               </div>
               <div>
                 <span className="block text-brand-black dark:text-brand-white mb-1">Inquiries</span>
-                atelier@maison.com
+                atelier@sutra.com
               </div>
             </div>
           </motion.div>

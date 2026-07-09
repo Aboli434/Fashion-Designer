@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     title: "The making of FW27: Chaos and Control",
     category: "Atelier",
     date: "OCT 14, 2026",
-    excerpt: "Step behind the curtain and witness the intense creative process leading up to our Paris runway debut for Eclipse.",
+    excerpt: "Step behind the curtain and witness the intense creative process leading up to our Lakme Fashion Week debut for Sharad.",
     content: "The FW27 collection, Eclipse, was born from a desire to master the chaotic elements of winter styling. Behind the scenes, the atelier was a storm of raw wool, structured leather, and endless fittings. Every sharp angle and deep monolith of black was meticulously crafted to ensure the garments didn't just drape, but commanded the space they occupied. This post takes you through the grueling, yet beautiful, 72 hours before the models stepped onto the concrete runway.",
     image: "/images/blog-1.png"
   },
@@ -36,8 +36,8 @@ export const blogPosts: BlogPost[] = [
     title: "Industrial Chic: The Intersection of Concrete and Couture",
     category: "Runway",
     date: "SEP 10, 2026",
-    excerpt: "Exploring the thematic decisions behind hosting our latest runway in an abandoned Parisian warehouse.",
-    content: "Fashion does not exist in a vacuum; it interacts with its environment. For our latest showing, we abandoned the pristine white halls of traditional venues for the stark, unforgiving concrete of an industrial warehouse in the outskirts of Paris. The contrast between our flowing garments and the brutalist architecture highlighted the inherent strength of the collection. The natural, harsh lighting cast dramatic shadows, turning the runway into a living, breathing editorial.",
+    excerpt: "Exploring the thematic decisions behind hosting our latest runway in an abandoned Mumbai warehouse.",
+    content: "Fashion does not exist in a vacuum; it interacts with its environment. For our latest showing, we abandoned the pristine white halls of traditional venues for the stark, unforgiving concrete of an industrial warehouse in the outskirts of Mumbai. The contrast between our flowing garments and the brutalist architecture highlighted the inherent strength of the collection. The natural, harsh lighting cast dramatic shadows, turning the runway into a living, breathing editorial.",
     image: "/images/blog-3.png"
   }
 ];

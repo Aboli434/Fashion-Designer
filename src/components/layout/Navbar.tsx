@@ -59,7 +59,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Maison
+                Sutra
               </motion.h1>
             </Link>
           </div>
@@ -102,7 +102,7 @@ export function Navbar() {
           >
             <div className="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
               <span className="font-serif text-2xl tracking-widest uppercase text-brand-black dark:text-brand-white">
-                Maison
+                Sutra
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

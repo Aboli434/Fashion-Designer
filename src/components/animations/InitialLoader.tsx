@@ -40,7 +40,7 @@ export function InitialLoader() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="font-serif text-5xl md:text-7xl uppercase tracking-widest"
             >
-              Maison
+              Sutra
             </motion.h1>
           </div>
           

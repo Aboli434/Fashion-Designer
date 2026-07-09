@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { BlogCard } from "@/components/ui/BlogCard";
-import { blogPosts } from "@/lib/blogData";
+import { BlogPost } from "@prisma/client";
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -24,7 +24,8 @@ const staggerContainer: Variants = {
   },
 };
 
-export function BlogSection() {
+export function BlogSection({ blogPosts }: { blogPosts: BlogPost[] }) {
+  if (!blogPosts || blogPosts.length === 0) return null;
   const featuredPost = blogPosts[0];
   const regularPosts = blogPosts.slice(1);
 

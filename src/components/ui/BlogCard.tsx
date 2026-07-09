@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BlogPost } from "@/lib/blogData";
+import { BlogPost } from "@prisma/client";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface BlogCardProps {

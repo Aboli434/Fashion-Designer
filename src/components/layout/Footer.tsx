@@ -38,7 +38,7 @@ export function Footer() {
           
           {/* Brand & Newsletter */}
           <div className="lg:col-span-2">
-            <h3 className="font-serif text-3xl uppercase tracking-widest mb-6">Maison</h3>
+            <h3 className="font-serif text-3xl uppercase tracking-widest mb-6">Sutra</h3>
             <p className="text-gray-400 font-sans max-w-sm mb-8 leading-relaxed">
               Join our private clientele to receive early access to new collections, exclusive editorials, and atelier updates.
             </p>
@@ -132,13 +132,13 @@ export function Footer() {
               className="font-serif text-[15vw] sm:text-[18vw] leading-none tracking-tighter uppercase text-transparent select-none" 
               style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)" }}
             >
-              Maison
+              Sutra
             </h2>
           </motion.div>
           
           <div className="w-full flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-widest mt-8">
-            <p>© {new Date().getFullYear()} Maison Atelier. All rights reserved.</p>
-            <p className="mt-4 md:mt-0">Designed in Paris</p>
+            <p>© {new Date().getFullYear()} Sutra Atelier. All rights reserved.</p>
+            <p className="mt-4 md:mt-0">Designed in Mumbai</p>
           </div>
         </div>
 

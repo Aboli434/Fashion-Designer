@@ -6,39 +6,14 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const testimonials = [
-  {
-    id: 1,
-    quote: "Maison's pieces are a masterclass in structural elegance. The FW27 collection single-handedly redefined how we style avant-garde looks for the red carpet.",
-    name: "Eleanor Vance",
-    role: "Editor-in-Chief, Vogue Paris",
-    image: "/images/client-1.png",
-    rating: 5,
-  },
-  {
-    id: 2,
-    quote: "Working with this atelier is a revelation. The uncompromising quality and dramatic silhouettes always make my clients the center of attention.",
-    name: "Julian Sterling",
-    role: "Celebrity Stylist",
-    image: "/images/client-2.png",
-    rating: 5,
-  },
-  {
-    id: 3,
-    quote: "Our boutique clients demand the extraordinary. The capsule collections from Maison consistently exceed expectations with their striking red and black palette.",
-    name: "Clara Dupont",
-    role: "Owner, L'Etoile Boutique",
-    image: "/images/client-3.png",
-    rating: 5,
-  },
-];
+import { Testimonial } from "@prisma/client";
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !testimonials || testimonials.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -51,6 +26,8 @@ export function TestimonialsSection() {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
   };
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
     <section className="py-24 px-6 sm:px-12 md:px-24 bg-brand-white dark:bg-brand-black text-brand-black dark:text-brand-white overflow-hidden border-t border-gray-200 dark:border-gray-800">

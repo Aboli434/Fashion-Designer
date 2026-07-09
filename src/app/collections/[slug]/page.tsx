@@ -1,4 +1,4 @@
-import { getCollectionBySlug } from "@/lib/data";
+import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { FadeIn } from "@/components/animations/FadeIn";
@@ -11,7 +11,9 @@ interface CollectionPageProps {
 export default async function CollectionPage({ params }: CollectionPageProps) {
   // Await the params object in Next.js 15
   const slug = (await params).slug;
-  const collection = getCollectionBySlug(slug);
+  const collection = await prisma.collection.findUnique({
+    where: { slug }
+  });
 
   if (!collection) {
     notFound();

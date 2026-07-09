@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/lib/blogData";
+import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { FadeIn } from "@/components/animations/FadeIn";
@@ -10,7 +10,9 @@ interface BlogDetailPageProps {
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await prisma.blogPost.findUnique({
+    where: { slug }
+  });
 
   if (!post) {
     notFound();

@@ -3,7 +3,7 @@
     "word1": "Redefine",
     "word2": "Elegance",
     "word3": "Today.",
-    "subtitle": "Discover the new avant-garde collection where bold streetwear meets timeless luxury tailoring.",
+    "subtitle": "Discover the new avant-garde collection where bold modern silhouettes meet timeless Indian craftsmanship.",
     "image": "/images/hero.png",
     "buttons": [
       {
@@ -21,7 +21,7 @@
   "about": {
     "title": "The",
     "highlight": "Visionary",
-    "description": "Founded on the principles of unapologetic elegance and avant-garde structure, our atelier has spent over a decade redefining modern luxury. We believe in the power of silhouette, the necessity of impeccable tailoring, and the bold statement of stark contrast.",
+    "description": "Founded on the principles of unapologetic elegance and rich Indian heritage, our atelier has spent over a decade redefining modern luxury. We believe in the power of silhouette, the necessity of impeccable handwoven craftsmanship, and the bold statement of stark contrast.",
     "image": "/images/designer.png",
     "stats": [
       { "label": "Years Active", "value": 12 },
@@ -33,17 +33,17 @@
       {
         "year": "2014",
         "title": "Atelier Foundation",
-        "description": "The brand was born in a small studio in Paris, focusing entirely on bespoke tailoring and avant-garde silhouettes."
+        "description": "The brand was born in a small studio in Mumbai, focusing entirely on bespoke tailoring and contemporary Indian silhouettes."
       },
       {
         "year": "2016",
         "title": "First Runway",
-        "description": "Debuted the first full collection at Paris Fashion Week, gaining international recognition for the stark black & red palette."
+        "description": "Debuted the first full collection at Lakme Fashion Week, gaining international recognition for the stark black & crimson palette."
       },
       {
         "year": "2022",
         "title": "Global Expansion",
-        "description": "Opened flagship stores in Tokyo, New York, and Milan. Expanding into luxury accessories."
+        "description": "Opened flagship stores in Delhi, New York, and Dubai. Expanding into luxury accessories and bridal wear."
       }
     ],
     "awards": [
@@ -63,25 +63,25 @@
   "testimonials": [
     {
       "id": 1,
-      "quote": "Maison's pieces are a masterclass in structural elegance. The FW27 collection single-handedly redefined how we style avant-garde looks for the red carpet.",
-      "name": "Eleanor Vance",
-      "role": "Editor-in-Chief, Vogue Paris",
+      "quote": "Sutra's pieces are a masterclass in structural elegance. The FW27 collection single-handedly redefined how we style regal looks for modern weddings and the red carpet.",
+      "name": "Nandita Verma",
+      "role": "Editor-in-Chief, Vogue India",
       "image": "/images/client-1.png",
       "rating": 5
     },
     {
       "id": 2,
       "quote": "Working with this atelier is a revelation. The uncompromising quality and dramatic silhouettes always make my clients the center of attention.",
-      "name": "Julian Sterling",
-      "role": "Celebrity Stylist",
+      "name": "Rohan Kapoor",
+      "role": "Bollywood Celebrity Stylist",
       "image": "/images/client-2.png",
       "rating": 5
     },
     {
       "id": 3,
-      "quote": "Our boutique clients demand the extraordinary. The capsule collections from Maison consistently exceed expectations with their striking red and black palette.",
-      "name": "Clara Dupont",
-      "role": "Owner, L'Etoile Boutique",
+      "quote": "Our boutique clients demand the extraordinary. The capsule collections from Sutra consistently exceed expectations with their striking color palette and intricate embroidery.",
+      "name": "Meera Rajput",
+      "role": "Owner, The Heritage Boutique",
       "image": "/images/client-3.png",
       "rating": 5
     }

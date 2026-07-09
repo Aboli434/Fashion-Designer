@@ -140,7 +140,7 @@ export function AboutSection() {
                     <h4 className="font-serif text-xl font-bold uppercase">Atelier Foundation</h4>
                     <span className="text-sm font-medium text-brand-red">2014</span>
                   </div>
-                  <p className="text-sm text-gray-600">The brand was born in a small studio in Paris, focusing entirely on bespoke tailoring and avant-garde silhouettes.</p>
+                  <p className="text-sm text-gray-600">The brand was born in a small studio in Mumbai, focusing entirely on bespoke tailoring and contemporary Indian silhouettes.</p>
                 </div>
               </motion.div>
               {/* Timeline Item 2 */}
@@ -151,7 +151,7 @@ export function AboutSection() {
                     <h4 className="font-serif text-xl font-bold uppercase">First Runway</h4>
                     <span className="text-sm font-medium text-gray-400">2016</span>
                   </div>
-                  <p className="text-sm text-gray-400">Debuted the first full collection at Paris Fashion Week, gaining international recognition for the stark black & red palette.</p>
+                  <p className="text-sm text-gray-400">Debuted the first full collection at Lakme Fashion Week, gaining international recognition for the stark black & crimson palette.</p>
                 </div>
               </motion.div>
               {/* Timeline Item 3 */}
@@ -182,7 +182,7 @@ export function AboutSection() {
             <div className="grid grid-cols-1 gap-6">
               {[
                 { year: "2023", title: "Designer of the Year", org: "International Fashion Council" },
-                { year: "2021", title: "Best Avant-Garde Collection", org: "Vogue Paris" },
+                { year: "2021", title: "Best Avant-Garde Collection", org: "Vogue India" },
                 { year: "2019", title: "Excellence in Tailoring", org: "CFDA Awards" },
                 { year: "2017", title: "Emerging Talent", org: "LVMH Prize Nominee" }
               ].map((award, i) => (
