@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { SplitText } from "@/components/animations/SplitText";
+import Link from "next/link";
 
 const textRevealVariants: Variants = {
   hidden: { y: "100%", opacity: 0 },
@@ -90,7 +91,9 @@ export function HeroSection({ data }: { data: HeroData }) {
             className="flex flex-col sm:flex-row gap-6"
           >
             {data.buttons.map((btn, idx) => (
-              <Button key={idx} variant={btn.variant}>{btn.text}</Button>
+              <Link key={idx} href={btn.link}>
+                <Button variant={btn.variant} className="w-full sm:w-auto">{btn.text}</Button>
+              </Link>
             ))}
           </motion.div>
         </div>

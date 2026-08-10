@@ -38,7 +38,7 @@ export function Footer() {
           
           {/* Brand & Newsletter */}
           <div className="lg:col-span-2">
-            <h3 className="font-serif text-3xl uppercase tracking-widest mb-6">Sutra</h3>
+            <h3 className="font-serif text-3xl uppercase tracking-widest mb-6">Advait Studio</h3>
             <p className="text-gray-400 font-sans max-w-sm mb-8 leading-relaxed">
               Join our private clientele to receive early access to new collections, exclusive editorials, and atelier updates.
             </p>
@@ -75,13 +75,18 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest text-gray-500 mb-6">Explore</h4>
             <ul className="space-y-4">
-              {["Collections", "Lookbook", "Editorial", "About the Designer"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Collections", href: "/collections" },
+                { name: "Studio", href: "/about" },
+                { name: "Journal", href: "/journal" },
+                { name: "Contact", href: "/contact" }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href="#" 
+                    href={item.href} 
                     className="text-gray-300 hover:text-brand-white hover:pl-2 transition-all duration-300 inline-block font-serif text-lg"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -92,26 +97,29 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest text-gray-500 mb-6">Connect</h4>
             <div className="flex gap-4 mb-12">
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
                 <InstagramIcon className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
+              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
                 <TwitterIcon className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
+              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-brand-white hover:text-brand-black hover:border-brand-white transition-all duration-300">
                 <FacebookIcon className="w-4 h-4" />
               </Link>
             </div>
             
             <h4 className="font-bold text-xs uppercase tracking-widest text-gray-500 mb-6">Legal</h4>
             <ul className="space-y-3">
-              {["Terms of Service", "Privacy Policy", "Shipping & Returns"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Terms of Service", href: "/terms" },
+                { name: "Privacy Policy", href: "/privacy" }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    href="#" 
+                    href={item.href} 
                     className="text-gray-400 hover:text-brand-white text-sm transition-colors duration-300"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -132,12 +140,12 @@ export function Footer() {
               className="font-serif text-[15vw] sm:text-[18vw] leading-none tracking-tighter uppercase text-transparent select-none" 
               style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)" }}
             >
-              Sutra
+              Advait
             </h2>
           </motion.div>
           
           <div className="w-full flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-widest mt-8">
-            <p>© {new Date().getFullYear()} Sutra Atelier. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Advait Studio. All rights reserved.</p>
             <p className="mt-4 md:mt-0">Designed in Mumbai</p>
           </div>
         </div>

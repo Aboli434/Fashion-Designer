@@ -23,7 +23,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
   const contentY = useTransform(scrollYProgress, [0, 1], [featured ? 50 : 30, featured ? -50 : -30]);
 
   return (
-    <Link href={`/blog/${post.slug}`} className="group block">
+    <Link href={`/journal/${post.slug}`} className="group block">
       <div ref={ref} className={`flex ${featured ? 'flex-col md:flex-row gap-8 lg:gap-16 items-center' : 'flex-col gap-6'} w-full`}>
         {/* Image Container */}
         <div className={`relative overflow-hidden w-full ${featured ? 'md:w-1/2 aspect-[4/3] md:aspect-square' : 'aspect-[4/3]'}`}>

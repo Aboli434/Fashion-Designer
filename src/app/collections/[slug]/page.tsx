@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 interface CollectionPageProps {
   params: Promise<{ slug: string }>;
@@ -42,8 +43,10 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         {/* Right: Content Content */}
         <div className="lg:w-1/2 flex flex-col justify-center">
           <FadeIn delay={0.2} duration={0.8}>
-            <div className="uppercase tracking-widest text-brand-red text-sm font-medium mb-4">
-              Collection Archive
+            <div className="flex items-center gap-4 mb-4">
+              <Link href="/collections" className="uppercase tracking-widest text-brand-red text-xs font-medium hover:text-brand-black dark:hover:text-brand-white transition-colors">
+                ← Back to Collections
+              </Link>
             </div>
             <h1 className="font-serif text-5xl md:text-7xl uppercase tracking-tight text-brand-black dark:text-brand-white mb-8">
               {collection.title}
@@ -59,8 +62,9 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary">Shop Collection</Button>
-              <Button variant="outline">View Lookbook</Button>
+              <Link href={`/contact?type=${collection.slug}`}>
+                <Button variant="primary" className="w-full sm:w-auto">Inquire About Collection</Button>
+              </Link>
             </div>
           </FadeIn>
         </div>

@@ -3,6 +3,7 @@
 import { useState, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { submitContact } from "@/app/actions/contact";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,17 @@ export function ContactSection() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const searchParams = useSearchParams();
+  const typeParam = searchParams.get("type");
+  
+  // Try to map type param to one of the options
+  let defaultType = "";
+  if (typeParam) {
+    if (typeParam.includes("collection")) defaultType = "Couture Enquiry";
+    else if (typeParam === "editorial") defaultType = "Editorial Collaboration";
+    else if (typeParam === "bridal") defaultType = "Bridal Appointment";
+    else defaultType = "Custom Commission";
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -131,7 +143,7 @@ export function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     <div>
                       <label htmlFor="project_type" className={labelClasses}>Project Type</label>
-                      <select name="project_type" id="project_type" required className={inputClasses} defaultValue="">
+                      <select name="project_type" id="project_type" required className={inputClasses} defaultValue={defaultType}>
                         <option value="" disabled>Select an option</option>
                         <option value="Couture Enquiry">Couture Enquiry</option>
                         <option value="Bridal Appointment">Bridal Appointment</option>

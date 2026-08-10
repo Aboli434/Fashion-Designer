@@ -9,12 +9,12 @@
       {
         "text": "Explore Couture",
         "variant": "primary",
-        "link": "#"
+        "link": "/collections"
       },
       {
         "text": "Begin a Conversation",
         "variant": "outline",
-        "link": "#"
+        "link": "/contact"
       }
     ]
   },

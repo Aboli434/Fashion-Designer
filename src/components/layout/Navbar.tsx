@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const NAV_LINKS = [
-  { name: "Collections", href: "#" },
-  { name: "Runway", href: "#" },
-  { name: "Atelier", href: "#" },
-  { name: "Campaigns", href: "#" },
+  { name: "Collections", href: "/collections" },
+  { name: "Studio", href: "/about" },
+  { name: "Journal", href: "/journal" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -59,7 +59,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Sutra
+                Advait Studio
               </motion.h1>
             </Link>
           </div>
@@ -102,7 +102,7 @@ export function Navbar() {
           >
             <div className="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
               <span className="font-serif text-2xl tracking-widest uppercase text-brand-black dark:text-brand-white">
-                Sutra
+                Advait Studio
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

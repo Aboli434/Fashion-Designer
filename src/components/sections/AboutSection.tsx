@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation, Variants, useMotionValue, useTransform, animate } from "framer-motion";
 import Image from "next/image";
+import homeData from "@/data/home.json";
 
 // Reusable Animated Counter
 function AnimatedCounter({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) {
@@ -45,6 +46,8 @@ const staggerContainer: Variants = {
 };
 
 export function AboutSection() {
+  const data = homeData.about;
+
   return (
     <section className="py-24 px-6 sm:px-12 md:px-24 bg-brand-black text-brand-white">
       <div className="max-w-7xl mx-auto">
@@ -80,41 +83,26 @@ export function AboutSection() {
               className="space-y-8"
             >
               <motion.h2 variants={fadeUpVariants} className="font-serif text-5xl md:text-7xl uppercase tracking-tight">
-                The <span className="text-brand-red italic">Visionary</span>
+                {data.title} <span className="text-brand-red italic">{data.highlight}</span>
               </motion.h2>
               
               <motion.div variants={fadeUpVariants} className="w-16 h-1 bg-brand-red" />
               
-              <motion.p variants={fadeUpVariants} className="text-gray-400 text-lg md:text-xl font-serif leading-relaxed max-w-2xl">
-                Founded on the principles of unapologetic elegance and avant-garde structure, our atelier has spent over a decade redefining modern luxury. We believe in the power of silhouette, the necessity of impeccable tailoring, and the bold statement of stark contrast.
+              <motion.p variants={fadeUpVariants} className="text-gray-400 text-lg md:text-xl font-serif leading-relaxed max-w-2xl whitespace-pre-line">
+                {data.description}
               </motion.p>
 
               {/* Animated Counters */}
               <motion.div variants={fadeUpVariants} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-gray-800">
-                <div>
-                  <div className="text-4xl md:text-5xl font-serif text-brand-red mb-2">
-                    <AnimatedCounter from={0} to={12} />
+                {data.stats.map((stat, i) => (
+                  <div key={i}>
+                    <div className={`text-4xl md:text-5xl font-serif mb-2 ${i === 0 ? 'text-brand-red' : 'text-brand-white'}`}>
+                      <AnimatedCounter from={0} to={stat.value} />
+                      {stat.label.includes("Retailers") ? "+" : ""}
+                    </div>
+                    <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
                   </div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500">Years Active</div>
-                </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-serif text-brand-white mb-2">
-                    <AnimatedCounter from={0} to={24} />
-                  </div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500">Collections</div>
-                </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-serif text-brand-white mb-2">
-                    <AnimatedCounter from={0} to={150} />+
-                  </div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500">Retailers</div>
-                </div>
-                <div>
-                  <div className="text-4xl md:text-5xl font-serif text-brand-white mb-2">
-                    <AnimatedCounter from={0} to={14} />
-                  </div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500">Global Awards</div>
-                </div>
+                ))}
               </motion.div>
             </motion.div>
           </div>
@@ -132,39 +120,18 @@ export function AboutSection() {
               The Journey
             </motion.h3>
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-800 before:to-transparent">
-              {/* Timeline Item 1 */}
-              <motion.div variants={fadeUpVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                <div className="flex items-center justify-center w-5 h-5 rounded-full border-4 border-brand-black bg-brand-red shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow" />
-                <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-brand-white text-brand-black p-6 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-serif text-xl font-bold uppercase">Atelier Foundation</h4>
-                    <span className="text-sm font-medium text-brand-red">2014</span>
+              {data.timeline.map((item, i) => (
+                <motion.div key={i} variants={fadeUpVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                  <div className={`flex items-center justify-center w-5 h-5 rounded-full border-4 border-brand-black shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow ${i === 0 ? 'bg-brand-red' : 'bg-gray-600 group-hover:bg-brand-red transition-colors'}`} />
+                  <div className={`w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] p-6 transition-all duration-300 ${i === 0 ? 'bg-brand-white text-brand-black hover:-translate-y-1' : 'border border-gray-800 hover:-translate-y-1 hover:border-brand-red'}`}>
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-serif text-xl font-bold uppercase">{item.title}</h4>
+                      <span className={`text-sm font-medium ${i === 0 ? 'text-brand-red' : 'text-gray-400'}`}>{item.year}</span>
+                    </div>
+                    <p className={`text-sm ${i === 0 ? 'text-gray-600' : 'text-gray-400'}`}>{item.description}</p>
                   </div>
-                  <p className="text-sm text-gray-600">The brand was born in a small studio in Mumbai, focusing entirely on bespoke tailoring and contemporary Indian silhouettes.</p>
-                </div>
-              </motion.div>
-              {/* Timeline Item 2 */}
-              <motion.div variants={fadeUpVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                <div className="flex items-center justify-center w-5 h-5 rounded-full border-4 border-brand-black bg-gray-600 group-hover:bg-brand-red transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow" />
-                <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] border border-gray-800 p-6 hover:-translate-y-1 hover:border-brand-red transition-all duration-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-serif text-xl font-bold uppercase">First Runway</h4>
-                    <span className="text-sm font-medium text-gray-400">2016</span>
-                  </div>
-                  <p className="text-sm text-gray-400">Debuted the first full collection at Lakme Fashion Week, gaining international recognition for the stark black & crimson palette.</p>
-                </div>
-              </motion.div>
-              {/* Timeline Item 3 */}
-              <motion.div variants={fadeUpVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                <div className="flex items-center justify-center w-5 h-5 rounded-full border-4 border-brand-black bg-gray-600 group-hover:bg-brand-red transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow" />
-                <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] border border-gray-800 p-6 hover:-translate-y-1 hover:border-brand-red transition-all duration-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-serif text-xl font-bold uppercase">Global Expansion</h4>
-                    <span className="text-sm font-medium text-gray-400">2022</span>
-                  </div>
-                  <p className="text-sm text-gray-400">Opened flagship stores in Tokyo, New York, and Milan. Expanding into luxury accessories.</p>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
@@ -180,12 +147,7 @@ export function AboutSection() {
               Recognition
             </motion.h3>
             <div className="grid grid-cols-1 gap-6">
-              {[
-                { year: "2023", title: "Designer of the Year", org: "International Fashion Council" },
-                { year: "2021", title: "Best Avant-Garde Collection", org: "Vogue India" },
-                { year: "2019", title: "Excellence in Tailoring", org: "CFDA Awards" },
-                { year: "2017", title: "Emerging Talent", org: "LVMH Prize Nominee" }
-              ].map((award, i) => (
+              {data.awards.map((award, i) => (
                 <motion.div 
                   key={i} 
                   variants={fadeUpVariants}

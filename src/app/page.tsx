@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Suspense } from "react";
 
 // Import local data
 import homeData from "@/data/home.json";
@@ -25,7 +26,9 @@ export default async function Home() {
       <GallerySection />
       <TestimonialsSection testimonials={testimonials} />
       <BlogSection blogPosts={blogPosts} />
-      <ContactSection />
+      <Suspense fallback={<div>Loading contact form...</div>}>
+        <ContactSection />
+      </Suspense>
     </main>
   );
 }
