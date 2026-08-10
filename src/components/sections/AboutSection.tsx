@@ -62,7 +62,7 @@ export function AboutSection() {
             <div className="relative w-full h-full z-10">
               <Image 
                 src="/images/designer.png"
-                alt="Lead Designer"
+                alt="Contemporary Indian fashion designer working in Mumbai studio"
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 sizes="(max-width: 1024px) 100vw, 50vw"

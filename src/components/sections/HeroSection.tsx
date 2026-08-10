@@ -105,7 +105,7 @@ export function HeroSection({ data }: { data: HeroData }) {
           <div className="absolute inset-0 bg-brand-black/20 z-10" /> {/* Subtle overlay for contrast */}
           <Image
             src={data.image}
-            alt="Luxury Fashion Model"
+            alt="Contemporary Indian couture drape in handwoven Banarasi silk"
             fill
             priority
             className="object-cover object-center"

@@ -1,18 +1,18 @@
 {
   "hero": {
-    "word1": "Redefine",
-    "word2": "Elegance",
-    "word3": "Today.",
-    "subtitle": "Discover the new avant-garde collection where bold modern silhouettes meet timeless Indian craftsmanship.",
+    "word1": "Advait",
+    "word2": "Studio",
+    "word3": "",
+    "subtitle": "Rooted in craft. Sculpted for tomorrow. A modern Indian couture house redefining the architecture of the drape.",
     "image": "/images/hero.png",
     "buttons": [
       {
-        "text": "Explore Collection",
+        "text": "Explore Couture",
         "variant": "primary",
         "link": "#"
       },
       {
-        "text": "Discover Atelier",
+        "text": "Begin a Conversation",
         "variant": "outline",
         "link": "#"
       }
@@ -20,45 +20,98 @@
   },
   "about": {
     "title": "The",
-    "highlight": "Visionary",
-    "description": "Founded on the principles of unapologetic elegance and rich Indian heritage, our atelier has spent over a decade redefining modern luxury. We believe in the power of silhouette, the necessity of impeccable handwoven craftsmanship, and the bold statement of stark contrast.",
+    "highlight": "Studio",
+    "description": "Based in Mumbai, Advait Studio is built on the foundation of Indian textile heritage and contemporary tailoring. We explore the tension between structure and fluidity—working with master artisans to reinvent the saree, hand-embroidered silks, and modern bridal couture for a global audience.",
     "image": "/images/designer.png",
     "stats": [
-      { "label": "Years Active", "value": 12 },
-      { "label": "Collections", "value": 24 },
-      { "label": "Retailers", "value": 150, "suffix": "+" },
-      { "label": "Global Awards", "value": 14 }
+      {
+        "label": "Years Active",
+        "value": 8
+      },
+      {
+        "label": "Collections",
+        "value": 16
+      },
+      {
+        "label": "Artisan Clusters",
+        "value": 12
+      },
+      {
+        "label": "Global Showcases",
+        "value": 6
+      }
     ],
     "timeline": [
       {
-        "year": "2014",
-        "title": "Atelier Foundation",
-        "description": "The brand was born in a small studio in Mumbai, focusing entirely on bespoke tailoring and contemporary Indian silhouettes."
+        "year": "2018",
+        "title": "Studio Inception",
+        "description": "Founded in a quiet lane in South Mumbai, focusing on structural experimentation with handwoven Banarasi textiles."
       },
       {
-        "year": "2016",
-        "title": "First Runway",
-        "description": "Debuted the first full collection at Lakme Fashion Week, gaining international recognition for the stark black & crimson palette."
+        "year": "2021",
+        "title": "The First Drape",
+        "description": "Introduced our signature pre-stitched conceptual saree, gaining recognition from independent fashion editorials."
       },
       {
-        "year": "2022",
-        "title": "Global Expansion",
-        "description": "Opened flagship stores in Delhi, New York, and Dubai. Expanding into luxury accessories and bridal wear."
+        "year": "2024",
+        "title": "Contemporary Bridal",
+        "description": "Launched the modern bridal couture line, blending Zardozi craftsmanship with minimalist architectural silhouettes."
       }
     ],
     "awards": [
-      { "year": "2023", "title": "Designer of the Year", "org": "International Fashion Council" },
-      { "year": "2021", "title": "Best Avant-Garde Collection", "org": "Vogue Paris" },
-      { "year": "2019", "title": "Excellence in Tailoring", "org": "CFDA Awards" },
-      { "year": "2017", "title": "Emerging Talent", "org": "LVMH Prize Nominee" }
+      {
+        "year": "2026",
+        "title": "Emerging Designer",
+        "org": "Contemporary Couture Showcase"
+      },
+      {
+        "year": "2025",
+        "title": "Independent Design Residency",
+        "org": "Textile Arts Council"
+      },
+      {
+        "year": "2023",
+        "title": "Innovation in Craft",
+        "org": "Modern Indian Fashion Forum"
+      },
+      {
+        "year": "2021",
+        "title": "Best New Talent",
+        "org": "Mumbai Design Week"
+      }
     ]
   },
   "gallery": [
-    { "id": 1, "src": "/images/gallery-1.png", "alt": "Editorial portrait", "aspect": "aspect-[3/4]" },
-    { "id": 2, "src": "/images/gallery-2.png", "alt": "Runway model in black", "aspect": "aspect-[4/5]" },
-    { "id": 3, "src": "/images/gallery-3.png", "alt": "Macro luxury fabric", "aspect": "aspect-square" },
-    { "id": 4, "src": "/images/gallery-4.png", "alt": "Streetwear in motion", "aspect": "aspect-[4/5]" },
-    { "id": 5, "src": "/images/gallery-5.png", "alt": "Luxury leather bag", "aspect": "aspect-[3/4]" }
+    {
+      "id": 1,
+      "src": "/images/gallery-1.png",
+      "alt": "Raw Silk / Zari / Mumbai Studio",
+      "aspect": "aspect-[3/4]"
+    },
+    {
+      "id": 2,
+      "src": "/images/gallery-2.png",
+      "alt": "The Sculpted Drape / Handwoven Cotton / 2026",
+      "aspect": "aspect-[4/5]"
+    },
+    {
+      "id": 3,
+      "src": "/images/gallery-3.png",
+      "alt": "Detail: Micro Pearl Embroidery on Tulle",
+      "aspect": "aspect-square"
+    },
+    {
+      "id": 4,
+      "src": "/images/gallery-4.png",
+      "alt": "Contemporary Bridal / Ivory Silk Organza",
+      "aspect": "aspect-[4/5]"
+    },
+    {
+      "id": 5,
+      "src": "/images/gallery-5.png",
+      "alt": "Banarasi Brocade / Architectural Silhouette",
+      "aspect": "aspect-[3/4]"
+    }
   ],
   "testimonials": [
     {

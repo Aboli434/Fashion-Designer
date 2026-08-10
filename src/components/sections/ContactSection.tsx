@@ -52,20 +52,20 @@ export function ContactSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <h2 className="font-serif text-5xl md:text-7xl uppercase tracking-tight mb-8">
-              Book the <br/><span className="text-brand-red italic">Atelier</span>
+              Begin a <br/><span className="text-brand-red italic">Conversation</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl font-serif max-w-md leading-relaxed mb-12">
-              Whether you are looking for a bespoke red-carpet creation, a commercial collaboration, or an editorial pull, our atelier is ready to bring your vision to life.
+              Whether you are looking for a bridal consultation, an editorial pull, or a custom couture commission, our studio is ready to bring your vision to life.
             </p>
             
             <div className="space-y-6 text-sm tracking-widest uppercase font-bold text-gray-500">
               <div>
-                <span className="block text-brand-black dark:text-brand-white mb-1">Paris HQ</span>
-                45 Avenue Montaigne, 75008 Paris
+                <span className="block text-brand-black dark:text-brand-white mb-1">Mumbai Studio</span>
+                Kala Ghoda, Mumbai
               </div>
               <div>
                 <span className="block text-brand-black dark:text-brand-white mb-1">Inquiries</span>
-                atelier@sutra.com
+                studio@advait.com
               </div>
             </div>
           </motion.div>
@@ -133,10 +133,11 @@ export function ContactSection() {
                       <label htmlFor="project_type" className={labelClasses}>Project Type</label>
                       <select name="project_type" id="project_type" required className={inputClasses} defaultValue="">
                         <option value="" disabled>Select an option</option>
-                        <option value="Bespoke Design">Bespoke Design</option>
-                        <option value="Editorial Pull">Editorial Pull</option>
-                        <option value="Brand Collaboration">Brand Collaboration</option>
-                        <option value="Other">Other</option>
+                        <option value="Couture Enquiry">Couture Enquiry</option>
+                        <option value="Bridal Appointment">Bridal Appointment</option>
+                        <option value="Editorial Collaboration">Editorial Collaboration</option>
+                        <option value="Styling Enquiry">Styling Enquiry</option>
+                        <option value="Custom Commission">Custom Commission</option>
                       </select>
                     </div>
                     <div>

@@ -4,11 +4,11 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 const galleryImages = [
-  { id: 1, src: "/images/gallery-1.png", alt: "Editorial portrait", aspect: "aspect-[3/4]" },
-  { id: 2, src: "/images/gallery-2.png", alt: "Runway model in black", aspect: "aspect-[4/5]" },
-  { id: 3, src: "/images/gallery-3.png", alt: "Macro luxury fabric", aspect: "aspect-square" },
-  { id: 4, src: "/images/gallery-4.png", alt: "Streetwear in motion", aspect: "aspect-[4/5]" },
-  { id: 5, src: "/images/gallery-5.png", alt: "Luxury leather bag", aspect: "aspect-[3/4]" },
+  { id: 1, src: "/images/gallery-1.png", alt: "Close up detail of luxurious raw silk fabric with intricate metallic zari embroidery", aspect: "aspect-[3/4]" },
+  { id: 2, src: "/images/gallery-2.png", alt: "Fashion editorial shot of an Indian model in a highly structured, avant-garde handwoven cotton drape", aspect: "aspect-[4/5]" },
+  { id: 3, src: "/images/gallery-3.png", alt: "Macro photography of extremely fine micro pearl embroidery on delicate sheer tulle fabric", aspect: "aspect-square" },
+  { id: 4, src: "/images/gallery-4.png", alt: "Editorial portrait of an Indian bride in an ivory silk organza modern drape", aspect: "aspect-[4/5]" },
+  { id: 5, src: "/images/gallery-5.png", alt: "High fashion full body shot of an Indian model wearing a deep red Banarasi brocade dress with architectural silhouette", aspect: "aspect-[3/4]" },
 ];
 
 const containerVariants: Variants = {
