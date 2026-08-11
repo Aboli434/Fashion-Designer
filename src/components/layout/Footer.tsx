@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Check, Loader2, AlertCircle } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { subscribeNewsletter } from "@/app/actions/newsletter";
 import { cn } from "@/lib/utils";
 
 const InstagramIcon = (props: any) => (
@@ -20,13 +21,28 @@ const FacebookIcon = (props: any) => (
 
 export function Footer() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "duplicate">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubscribe = (e: FormEvent) => {
+  const handleSubscribe = async (e: FormEvent) => {
     e.preventDefault();
-    if (email) {
+    setErrorMsg("");
+    
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMsg("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("loading");
+    const result = await subscribeNewsletter(email);
+
+    if (result.error) {
+      setStatus("idle");
+      setErrorMsg(result.error);
+    } else if (result.success === false) {
+      setStatus("duplicate");
+    } else {
       setStatus("success");
-      setTimeout(() => setStatus("idle"), 3000);
       setEmail("");
     }
   };
@@ -43,32 +59,89 @@ export function Footer() {
               Join our private clientele to receive early access to new collections, exclusive editorials, and atelier updates.
             </p>
             
-            <form onSubmit={handleSubscribe} className="relative max-w-md">
-              <input
-                type="email"
-                required
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b border-gray-600 focus:border-brand-white text-brand-white py-3 pr-12 outline-none transition-colors rounded-none placeholder:text-gray-600"
-              />
-              <button 
-                type="submit"
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-white transition-colors"
-                aria-label="Subscribe"
-              >
-                <ArrowRight className="w-5 h-5 stroke-[1.5]" />
-              </button>
-              {status === "success" && (
-                <motion.p 
+            <AnimatePresence mode="wait">
+              {status === "success" || status === "duplicate" ? (
+                <motion.div 
+                  key="success-state"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="absolute -bottom-8 left-0 text-brand-red text-sm font-medium tracking-wide"
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="max-w-md py-4"
                 >
-                  Welcome to the Atelier.
-                </motion.p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-brand-white text-brand-black">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <h4 className="font-serif text-xl tracking-wide text-brand-white">
+                      {status === "success" ? "You're on the list." : "You're already on the list."}
+                    </h4>
+                  </div>
+                  <p className="text-gray-400 font-sans text-sm leading-relaxed">
+                    Expect occasional notes from the Advait Studio — new collections, studio stories and the craft behind the work.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.form 
+                  key="form-state"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onSubmit={handleSubscribe} 
+                  className="relative max-w-md"
+                  noValidate
+                >
+                  <div className="relative group">
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (errorMsg) setErrorMsg("");
+                      }}
+                      disabled={status === "loading"}
+                      className={cn(
+                        "w-full bg-transparent border-b py-4 pr-32 outline-none transition-all duration-300 rounded-none placeholder:text-gray-600 font-sans text-brand-white",
+                        errorMsg 
+                          ? "border-brand-red focus:border-brand-red" 
+                          : "border-gray-700 focus:border-brand-white group-hover:border-gray-400",
+                        "[&:-webkit-autofill]:shadow-[0_0_0_30px_#0a0a0a_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
+                      )}
+                    />
+                    <button 
+                      type="submit"
+                      disabled={status === "loading" || !email}
+                      className="absolute right-0 top-1/2 -translate-y-1/2 text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-brand-white transition-colors disabled:opacity-50 disabled:hover:text-gray-400 flex items-center gap-2"
+                    >
+                      {status === "loading" ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Joining</span>
+                        </>
+                      ) : (
+                        "Join the Journal"
+                      )}
+                    </button>
+                  </div>
+                  
+                  <AnimatePresence>
+                    {errorMsg && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="absolute -bottom-6 left-0 flex items-center gap-1.5 text-brand-red text-xs font-medium"
+                      >
+                        <AlertCircle className="w-3.5 h-3.5" />
+                        {errorMsg}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.form>
               )}
-            </form>
+            </AnimatePresence>
           </div>
 
           {/* Explore */}
