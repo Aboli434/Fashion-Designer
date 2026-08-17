@@ -9,17 +9,17 @@
   --color-brand-red: #e60000;
 }
 
+@custom-variant dark (&:is(.dark *));
+
 @layer base {
   :root {
     --background: var(--color-brand-white);
     --foreground: var(--color-brand-black);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: var(--color-brand-black);
-      --foreground: var(--color-brand-white);
-    }
+  .dark {
+    --background: var(--color-brand-black);
+    --foreground: var(--color-brand-white);
   }
 
   body {

@@ -8,7 +8,7 @@ import { submitContact } from "@/app/actions/contact";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-const inputClasses = "w-full bg-transparent border-b border-gray-600 focus:border-brand-white dark:border-gray-800 dark:focus:border-brand-white text-brand-black dark:text-brand-white py-3 outline-none transition-colors rounded-none appearance-none";
+const inputClasses = "w-full bg-transparent border-b border-gray-600 focus:border-brand-black dark:border-gray-800 dark:focus:border-brand-white text-brand-black dark:text-brand-white py-3 outline-none transition-colors rounded-none appearance-none";
 const labelClasses = "block text-xs font-bold tracking-widest uppercase text-gray-500 mb-1";
 
 export function ContactSection() {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Loader2, AlertCircle } from "lucide-react";
 import { FormEvent, useState } from "react";
-import { subscribeNewsletter } from "@/app/actions/newsletter";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const InstagramIcon = (props: any) => (
@@ -23,45 +23,62 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "duplicate">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const pathname = usePathname();
 
   const handleSubscribe = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
-    
+
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setErrorMsg("Please enter a valid email address.");
       return;
     }
 
     setStatus("loading");
-    const result = await subscribeNewsletter(email);
 
-    if (result.error) {
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 409) {
+        setStatus("duplicate");
+      } else if (!response.ok) {
+        setStatus("idle");
+        setErrorMsg(data.error || "Something went wrong.");
+      } else {
+        setStatus("success");
+        setEmail("");
+      }
+    } catch (error) {
       setStatus("idle");
-      setErrorMsg(result.error);
-    } else if (result.success === false) {
-      setStatus("duplicate");
-    } else {
-      setStatus("success");
-      setEmail("");
+      setErrorMsg("Network error. Please try again.");
     }
   };
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="bg-brand-black text-brand-white pt-24 pb-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
-          
+
           {/* Brand & Newsletter */}
           <div className="lg:col-span-2">
             <h3 className="font-serif text-3xl uppercase tracking-widest mb-6">Advait Studio</h3>
             <p className="text-gray-400 font-sans max-w-sm mb-8 leading-relaxed">
               Join our private clientele to receive early access to new collections, exclusive editorials, and atelier updates.
             </p>
-            
+
             <AnimatePresence mode="wait">
               {status === "success" || status === "duplicate" ? (
-                <motion.div 
+                <motion.div
                   key="success-state"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -82,12 +99,12 @@ export function Footer() {
                   </p>
                 </motion.div>
               ) : (
-                <motion.form 
+                <motion.form
                   key="form-state"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  onSubmit={handleSubscribe} 
+                  onSubmit={handleSubscribe}
                   className="relative max-w-md"
                   noValidate
                 >
@@ -104,13 +121,13 @@ export function Footer() {
                       disabled={status === "loading"}
                       className={cn(
                         "w-full bg-transparent border-b py-4 pr-32 outline-none transition-all duration-300 rounded-none placeholder:text-gray-600 font-sans text-brand-white",
-                        errorMsg 
-                          ? "border-brand-red focus:border-brand-red" 
+                        errorMsg
+                          ? "border-brand-red focus:border-brand-red"
                           : "border-gray-700 focus:border-brand-white group-hover:border-gray-400",
                         "[&:-webkit-autofill]:shadow-[0_0_0_30px_#0a0a0a_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                       )}
                     />
-                    <button 
+                    <button
                       type="submit"
                       disabled={status === "loading" || !email}
                       className="absolute right-0 top-1/2 -translate-y-1/2 text-xs uppercase tracking-widest font-bold text-gray-400 hover:text-brand-white transition-colors disabled:opacity-50 disabled:hover:text-gray-400 flex items-center gap-2"
@@ -125,10 +142,10 @@ export function Footer() {
                       )}
                     </button>
                   </div>
-                  
+
                   <AnimatePresence>
                     {errorMsg && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
@@ -155,8 +172,8 @@ export function Footer() {
                 { name: "Contact", href: "/contact" }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     className="text-gray-300 hover:text-brand-white hover:pl-2 transition-all duration-300 inline-block font-serif text-lg"
                   >
                     {item.name}
@@ -180,7 +197,7 @@ export function Footer() {
                 <FacebookIcon className="w-4 h-4" />
               </Link>
             </div>
-            
+
             <h4 className="font-bold text-xs uppercase tracking-widest text-gray-500 mb-6">Legal</h4>
             <ul className="space-y-3">
               {[
@@ -188,8 +205,8 @@ export function Footer() {
                 { name: "Privacy Policy", href: "/privacy" }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     className="text-gray-400 hover:text-brand-white text-sm transition-colors duration-300"
                   >
                     {item.name}
@@ -202,21 +219,21 @@ export function Footer() {
 
         {/* Massive Logo Bottom */}
         <div className="pt-12 border-t border-gray-800 flex flex-col items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-full overflow-hidden flex justify-center items-center py-8"
           >
-            <h2 
-              className="font-serif text-[15vw] sm:text-[18vw] leading-none tracking-tighter uppercase text-transparent select-none" 
+            <h2
+              className="font-serif text-[15vw] sm:text-[18vw] leading-none tracking-tighter uppercase text-transparent select-none"
               style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)" }}
             >
               Advait
             </h2>
           </motion.div>
-          
+
           <div className="w-full flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-widest mt-8">
             <p>© {new Date().getFullYear()} Advait Studio. All rights reserved.</p>
             <p className="mt-4 md:mt-0">Designed in Mumbai</p>
