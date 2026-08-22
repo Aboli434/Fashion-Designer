@@ -47,8 +47,8 @@ export default async function AdminPage() {
                         <a href={`mailto:${sub.email}`} className="text-gray-500 text-xs tracking-widest uppercase hover:text-brand-red transition-colors font-bold">{sub.email}</a>
                       </div>
                       <div className="mt-4 sm:mt-0 text-[10px] text-brand-red font-bold tracking-widest uppercase text-right">
-                        <div>{new Date(sub.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
-                        <div className="text-gray-400 mt-0.5">{new Date(sub.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
+                        <div>{new Date(sub.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'Asia/Kolkata' })}</div>
+                        <div className="text-gray-400 mt-0.5">{new Date(sub.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Kolkata' })}</div>
                       </div>
                     </div>
                     

@@ -88,7 +88,8 @@ export default function SubscriberTable({ initialSubscribers }: { initialSubscri
                     {new Date(sub.createdAt).toLocaleDateString("en-GB", {
                       day: "numeric",
                       month: "short",
-                      year: "numeric"
+                      year: "numeric",
+                      timeZone: "Asia/Kolkata"
                     })}
                   </td>
                   <td className="px-6 py-4">
