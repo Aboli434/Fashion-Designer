@@ -71,10 +71,14 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <div className="md:hidden flex-1">
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 -ml-2 text-brand-black dark:text-brand-white hover:text-brand-red transition-colors"
             >
-              <Menu className="w-6 h-6 stroke-[1.5]" />
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 stroke-[1.5]" />
+              ) : (
+                <Menu className="w-6 h-6 stroke-[1.5]" />
+              )}
             </button>
           </div>
 
@@ -175,108 +179,88 @@ export function Navbar() {
               </button>
             </div>
           </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-brand-white dark:bg-brand-black flex flex-col"
-          >
-            <div className="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-800">
-              <span className="font-serif text-2xl tracking-widest uppercase text-brand-black dark:text-brand-white">
-                Advait Studio
-              </span>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 -mr-2 text-brand-black dark:text-brand-white hover:text-brand-red transition-colors"
-              >
-                <X className="w-6 h-6 stroke-[1.5]" />
-              </button>
-            </div>
-
-            <div className="flex-1 flex flex-col items-center justify-center space-y-8 p-6">
-              {NAV_LINKS.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-2xl md:text-4xl font-serif tracking-widest uppercase text-brand-black dark:text-brand-white hover:text-brand-red transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="p-8 flex flex-col justify-center items-center gap-6 border-t border-gray-200 dark:border-gray-800"
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden overflow-hidden absolute top-full left-0 right-0 bg-brand-white dark:bg-brand-black border-t border-gray-200 dark:border-gray-800 shadow-xl"
             >
-              <ThemeToggle />
-              <div className="flex items-center w-full max-w-xs border-b border-gray-300 dark:border-gray-700 pb-2 relative">
-                <Search className="w-5 h-5 stroke-[1.5] text-gray-500 mr-3 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent text-lg outline-none text-brand-black dark:text-brand-white"
-                />
-              </div>
+              <div className="px-6 py-8 flex flex-col space-y-6">
+                <div className="flex flex-col space-y-4">
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg font-serif tracking-widest uppercase text-brand-black dark:text-brand-white hover:text-brand-red transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
 
-              {/* Search Dropdown Mobile */}
-              {searchQuery.trim().length >= 2 && (
-                <div className="w-full max-w-xs bg-white dark:bg-brand-black border border-gray-200 dark:border-gray-800 shadow-xl max-h-64 overflow-y-auto text-left">
-                  {isSearching ? (
-                    <div className="p-4 flex justify-center text-gray-500">
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                    </div>
-                  ) : searchResults.length > 0 ? (
-                    <div className="flex flex-col">
-                      {searchResults.map((result) => (
-                        <Link
-                          key={result.id}
-                          href={`/${result.type === 'collection' ? 'collections' : 'journal'}/${result.slug}`}
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            setSearchQuery("");
-                          }}
-                          className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors border-b border-gray-100 dark:border-gray-900 last:border-0"
-                        >
-                          <div className="relative w-10 h-10 bg-gray-100 dark:bg-gray-800 shrink-0">
-                            <Image src={result.image} alt={result.title} fill className="object-cover" sizes="40px" />
-                          </div>
-                          <div>
-                            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">{result.type}</div>
-                            <div className="text-sm font-medium text-brand-black dark:text-brand-white line-clamp-1">{result.title}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-4 text-center text-sm text-gray-500">
-                      No results found.
+                <div className="pt-6 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Theme</span>
+                    <ThemeToggle />
+                  </div>
+                  
+                  <div className="flex items-center w-full border-b border-gray-300 dark:border-gray-700 pb-2 relative">
+                    <Search className="w-5 h-5 stroke-[1.5] text-gray-500 mr-3 shrink-0" />
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full bg-transparent text-sm outline-none text-brand-black dark:text-brand-white"
+                    />
+                  </div>
+                  
+                  {/* Search Dropdown Mobile */}
+                  {searchQuery.trim().length >= 2 && (
+                    <div className="w-full bg-white dark:bg-brand-black border border-gray-200 dark:border-gray-800 shadow-xl max-h-64 overflow-y-auto text-left mt-2">
+                      {isSearching ? (
+                        <div className="p-4 flex justify-center text-gray-500">
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                        </div>
+                      ) : searchResults.length > 0 ? (
+                        <div className="flex flex-col">
+                          {searchResults.map((result) => (
+                            <Link
+                              key={result.id}
+                              href={`/${result.type === 'collection' ? 'collections' : 'journal'}/${result.slug}`}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setSearchQuery("");
+                              }}
+                              className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors border-b border-gray-100 dark:border-gray-900 last:border-0"
+                            >
+                              <div className="relative w-10 h-10 bg-gray-100 dark:bg-gray-800 shrink-0">
+                                <Image src={result.image} alt={result.title} fill className="object-cover" sizes="40px" />
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">{result.type}</div>
+                                <div className="text-sm font-medium text-brand-black dark:text-brand-white line-clamp-1">{result.title}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="p-4 text-center text-sm text-gray-500">
+                          No results found.
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
+              </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </>
   );
 }
