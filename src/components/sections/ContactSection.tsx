@@ -156,9 +156,9 @@ export function ContactSection() {
                       <label htmlFor="budget" className={labelClasses}>Budget Range</label>
                       <select name="budget" id="budget" required className={inputClasses} defaultValue="">
                         <option value="" disabled>Select a range</option>
-                        <option value="$10k - $25k">$10k - $25k</option>
-                        <option value="$25k - $50k">$25k - $50k</option>
-                        <option value="$50k+">$50k+</option>
+                        <option value="₹10,000 - ₹50,000">₹10,000 - ₹50,000</option>
+                        <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                        <option value="₹1,00,000+">₹1,00,000+</option>
                         <option value="Undisclosed">Undisclosed</option>
                       </select>
                     </div>
